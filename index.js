@@ -6,6 +6,8 @@ const app = express();
 app.get("/", (req, res, next) => (
     //breakpoint check
     console.log(req),
+    console.log(1),
+    console.log(2),
     res.json("Hello World")
 ));
 
