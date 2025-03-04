@@ -1,15 +1,15 @@
 npx kill-port 3000
 
-项目要求：电影管理系统
-  基础部分：Movies
-	•	列表页列出所有电影,支持关键字搜索并能够按评分进行排序，允许分页查询。
-	•	单个电影的详情页
-	•	允许添加一个新的电影
-	•	允许修改电影信息。
-	•	允许删除电影。
-  扩展部分：Reviews
-	•	给电影添加评论，并记录评分。
-	•	获取某部电影的所有评论。
+##Project requirements: Movie Management System##
+Basics: Movies
+• The list page lists all movies, supports keyword search and can be sorted by ratings, allowing paging queries.
+• Single movie details page
+• Allows to add a new movie
+• Allows modification of movie information.
+• Allows deletion of movies.
+Extended section: Reviews
+• Add a comment to the movie and record the rating.
+• Get all comments for a movie.
 
   GET /v1/movies - 200
     query: limit (pageSize) = 10 | page = 1,2,3 | sort = rating,-rating | keyword (q) = abc |
@@ -20,7 +20,7 @@ npx kill-port 3000
   POST /v1/movies/:id/reviews - 201
   GET /v1/movies/:id/reviews - 200
 
-电影格式：
+The Movie Format：
   const movies = [
 	  {
 	    id: 1,
