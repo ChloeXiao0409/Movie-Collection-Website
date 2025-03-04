@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 
+// Debug Mode
+
 app.get("/", (req, res, next) => (
+    //breakpoint check
+    console.log(req),
     res.json("Hello World")
 ));
 
