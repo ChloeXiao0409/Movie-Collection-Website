@@ -1,3 +1,5 @@
+// No changed index code for practice
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
