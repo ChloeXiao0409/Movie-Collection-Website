@@ -4,7 +4,6 @@ require("dotenv").config({
     path: `.env.${NODE_ENV}`,
 });
 
-
 const optionalConfigs = {
     PORT: process.env.PORT || 3000,
     NODE_ENV
