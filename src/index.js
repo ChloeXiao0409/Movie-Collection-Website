@@ -1,6 +1,11 @@
+// Read environment variables need to be at the top of the file
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV || "development"}`,
+});
 const cors = require('cors');
 const express = require('express');
 const v1Router = require('./routes');
+const { config } = require('dotenv');
 
 const app = express();
 // const corsMiddleware = require('./middleware/cors.middleware');
@@ -13,6 +18,10 @@ app.use(express.json());
 // Router
 app.use("/v1", v1Router);
 
-app.listen(3000, () => {
-  console.log("Server is listening on port 3000");
+// DotEnv is for this development environment
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server is listening on the PORT: " + process.env.PORT);
+  console.log("Environment: " + process.env.NODE_ENV);
 });
+// Different environment between development and deployment
+// cross-env

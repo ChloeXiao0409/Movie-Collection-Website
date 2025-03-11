@@ -98,9 +98,9 @@ app.get("/v1/movies/:id", (req, res, next) => {
   res.status(200).json(movie);
 })
 
-app.listen(3000, () => {
-  console.log("Server is listening on port 3000");
-});
+// app.listen(3000, () => {
+//   console.log("Server is listening on port 3000");
+// });
 
 // ---------------------------------------------
 // Update a movie by id
