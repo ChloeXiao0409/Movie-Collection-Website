@@ -11,6 +11,9 @@ const { logger } = require('./utils/logger');
 const morganMiddleware = require('./middleware/morgan.middleware');
 const { default: rateLimit } = require('express-rate-limit');
 const { rateLimiter } = require('./middleware/rateLimit.middleware');
+// For API documentation
+const swaggerJsDoc = require('./utils/swagger');
+const swaggerUi = require('swagger-ui-express');
 
 //Why use log library -> winston - difine levels of logging / create logger file
 
@@ -25,6 +28,7 @@ app.use(express.json());
 
 // Router
 app.use("/v1", v1Router);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsDoc)); // http://localhost:4000/api-docs/
 
 // DotEnv is for this development environment
 app.listen(config.PORT, () => {

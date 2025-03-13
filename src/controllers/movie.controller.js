@@ -1,4 +1,5 @@
 const { createLogger } = require('../utils/logger');
+const swagger = require('../utils/swagger');
 
 // Description: Movie controller to handle the movie's request.
 const logger = createLogger(__filename);
@@ -20,7 +21,85 @@ const movies = [
   },
 ];
 
+// ---------------------------------------------
 // Add a new movie
+/**
+ * @swagger
+ * /v1/movies:
+ *   post:
+ *     summary: Add a new movie
+ *     description: Add a new movie to the collection.
+ *     tags:
+ *       - Movies
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: "Inception"
+ *               description:
+ *                 type: string
+ *                 example: "A skilled thief steals secrets from dreams."
+ *               types:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: ["Sci-Fi"]
+ *     responses:
+ *       201:
+ *         description: Movie created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   example: 1
+ *                 title:
+ *                   type: string
+ *                   example: "Inception"
+ *                 description:
+ *                   type: string
+ *                   example: "A skilled thief steals secrets from dreams."
+ *                 types:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                   example: ["Sci-Fi"]
+ *                 averageRating:
+ *                   type: number
+ *                   format: float
+ *                   example: 0
+ *                 reviews:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       content:
+ *                         type: string
+ *                         example: "Amazing movie!"
+ *                       rating:
+ *                         type: integer
+ *                         example: 5
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "All fields must be required and types must be an array."
+ */
 const addMovie = (req, res, next) => {
   
     // Deconstructure the Data you want
