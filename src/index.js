@@ -7,7 +7,9 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const express = require('express');
 const v1Router = require('./routes');
+const { logger } = require('./utils/logger');
 
+//Why use log library -> winston - difine levels of logging / create logger file
 
 const app = express();
 
@@ -21,7 +23,7 @@ app.use("/v1", v1Router);
 
 // DotEnv is for this development environment
 app.listen(config.PORT, () => {
-  console.log("Server is listening on the PORT: " + config.PORT);
+  logger.info("Server is listening on the PORT: " + config.PORT);
   console.log("Environment: " + config.NODE_ENV);
 });
 // Different environment between development and deployment

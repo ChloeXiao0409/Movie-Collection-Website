@@ -1,4 +1,8 @@
+const { createLogger } = require('../utils/logger');
+
 // Description: Movie controller to handle the movie's request.
+const logger = createLogger(__filename);
+
 let nextMovieId = 2;
 let nextReviewId = 3;
 
@@ -46,6 +50,9 @@ const addMovie = (req, res, next) => {
 // ---------------------------------------------
 // Get all movies
 const getAllMovies = (req, res, next) => {
+    // Add info level logger for checking get all movies
+    logger.info("Get all movies", {payload: {query: req.query }});
+
     const {keyword, page = 1, sort, limit = 10} = req.query;
   
     // Filter movies by keyword
@@ -69,6 +76,8 @@ const getAllMovies = (req, res, next) => {
     const endIndex = startIndex + parseInt(limit); 
     const paginatedMovies = filterMovires.slice(startIndex, endIndex);  
   
+    // Add a debug level logger for checking the number of movies returned
+    logger.debug("movie returned sucessfully", {payload: {count : paginatedMovies.length }});
     res.status(200).json(paginatedMovies);
 };
 

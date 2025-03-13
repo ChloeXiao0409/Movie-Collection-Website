@@ -6,7 +6,8 @@ require("dotenv").config({
 
 const optionalConfigs = {
     PORT: process.env.PORT || 3000,
-    NODE_ENV
+    NODE_ENV,
+    LOG_LEVEL: process.env.LOG_LEVEL || "info"
 };
 
 const requiredConfigs = {
