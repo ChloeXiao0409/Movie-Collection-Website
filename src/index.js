@@ -9,12 +9,15 @@ const express = require('express');
 const v1Router = require('./routes');
 const { logger } = require('./utils/logger');
 const morganMiddleware = require('./middleware/morgan.middleware');
+const { default: rateLimit } = require('express-rate-limit');
+const { rateLimiter } = require('./middleware/rateLimit.middleware');
 
 //Why use log library -> winston - difine levels of logging / create logger file
 
 const app = express();
 
 app.use(helmet());
+app.use(rateLimiter);
 app.use(cors());
 // app.use(morgan(config.NODE_ENV === "development" ? "dev" : "combined"));
 app.use(morganMiddleware);
